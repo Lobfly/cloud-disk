@@ -1,24 +1,12 @@
-# cloud-disk
+### 基于vue2的照片和视频云盘管理系统
 
-## Project setup
-```
-npm install
-```
+未完成
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+### 技术栈
 
-### Compiles and minifies for production
-```
-npm run build
-```
+- Vue2
+- vuex
+- vue-router
+- axios
+- Vuetify
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

@@ -1,28 +1,34 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  
+  <v-app>
+      <v-snackbar v-model="snackbar" top color="primary" timeout="2000">{{snackbarText}}</v-snackbar>
+      <router-view></router-view>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  computed:{
+    snackbar:{
+      get(){
+        return this.$store.state.snackbar
+      },
+      set(){
+        this.$store.commit('SetSnackbar',false)
+        return this.$store.state.snackbar
+      }
+      
+    },
+    snackbarText(){
+      return this.$store.state.snackbarText
+    },
+    snackbarColor(){
+      return this.$store.state.snackColor
+    }
   }
-}
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
