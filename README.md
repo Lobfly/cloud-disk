@@ -1,4 +1,4 @@
-### 基于vue2的照片和视频云盘管理系统
+### 基于vue2实现的照片与视频云盘管理系统
 
 未完成
 
@@ -10,3 +10,4 @@
 - axios
 - Vuetify
 
+后端接口来自于onlypluto提供，项目地址：https://gitee.com/onlypluto/image-cloud-disk
