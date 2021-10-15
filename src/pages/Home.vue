@@ -19,12 +19,16 @@
         <router-view></router-view>
       </keep-alive>
     </v-main>
+    <!-- 预览组件 -->
+    <Preview></Preview>
   </v-app>
 </template>
 
 <script>
+import Preview from "../components/Preview"
 export default {
     name:'Home',
+    components:{Preview},
     data(){
       return{
         menus:[

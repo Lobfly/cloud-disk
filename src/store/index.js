@@ -6,11 +6,16 @@ const state = {
     secretKey:'GR4VDO3930EZA2',
     snackbar:false,
     snackbarText:'hello',
-    snackbarColor:'primary'
+    snackbarColor:'primary',
+    isPreview: false,
+    previewFile: null
 }
 const actions = {
     setSnackbarText(ctx,val){
         ctx.commit('SetSnackbarText',val)
+    },
+    setPreviewFile(ctx,val){
+        ctx.commit('SetPreviewFile',val)
     }
 }
 const mutations = {
@@ -19,6 +24,12 @@ const mutations = {
     },
     SetSnackbar(state,val){
         state.snackbar = val
+    },
+    SetPreviewFile(state,val){
+        state.previewFile = val
+    },
+    SetIsPreview(state,val){
+        state.isPreview = val
     }
 }
 
