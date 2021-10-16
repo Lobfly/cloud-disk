@@ -1,7 +1,7 @@
 <template>
   <v-app class="home_page">
     <!-- 侧边导航栏 -->
-    <v-navigation-drawer app>
+    <v-navigation-drawer app expand-on-hover>
       <v-list nav>
         <v-list-item v-for="item in menus" :key="item.title" link :to="item.link">
             <v-list-item-icon>
@@ -21,14 +21,17 @@
     </v-main>
     <!-- 预览组件 -->
     <Preview></Preview>
+    <!-- 上传组件 -->
+    <Upload></Upload>
   </v-app>
 </template>
 
 <script>
 import Preview from "../components/Preview"
+import Upload from "../components/Upload"
 export default {
     name:'Home',
-    components:{Preview},
+    components:{Preview,Upload},
     data(){
       return{
         menus:[

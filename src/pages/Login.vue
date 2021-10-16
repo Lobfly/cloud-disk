@@ -122,6 +122,7 @@ export default {
                         path:'/home'
                     })
                     _axios.defaults.headers.Authorization = res.data.data.token  //和Home页面共用的一个_axios
+                    console.log(res.data.data.token)
                 }
             })
             .then((error)=>{

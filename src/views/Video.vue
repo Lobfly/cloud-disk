@@ -1,10 +1,14 @@
 <template>
-  <div></div>
+  <div>
+    <FileTable type="video"></FileTable>
+  </div>
 </template>
 
 <script>
+import FileTable from "../components/FileTable.vue"
 export default {
-    name:'Video'
+    name:'Video',
+    components:{FileTable}
 }
 </script>
 

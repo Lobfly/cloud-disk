@@ -8,7 +8,8 @@ const state = {
     snackbarText:'hello',
     snackbarColor:'primary',
     isPreview: false,
-    previewFile: null
+    previewFile: null,
+    previewType:''
 }
 const actions = {
     setSnackbarText(ctx,val){
@@ -30,6 +31,9 @@ const mutations = {
     },
     SetIsPreview(state,val){
         state.isPreview = val
+    },
+    SetPreviewType(state,val){
+        state.previewType = val
     }
 }
 
