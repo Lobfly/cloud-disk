@@ -113,19 +113,17 @@ export default {
           }
         }).then(()=>{
           this.getData()    //这里必须放在异步执行之后
-          this.$store.dispatch('setSnackbarText','删除成功')
-          this.$store.commit('SetSnackbar',true)
+          this.$bus.$emit('tip','删除成功')
         })
       },
       getData(){
-        _axios.defaults.headers.Authorization = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aW1lIjoxNjM0Mzg1NTYwNTAyLCJ0aW1lb3V0Ijo4NjQwMDAwMCwidWlkIjoiMTYzNDEyNDI2Mjg3NSIsImlhdCI6MTYzNDM4NTU2MH0.xqrOo68KTY--4jTWsb8dRjrttP8VnCfp7YJvX0hDUN8'
-        if(this.type == 'pictrue'){
+        _axios.defaults.headers.Authorization = localStorage.getItem('Authorization')
+        if(this.type == 'pictrue'){ 
             _axios.get('/data/getImageData')
             .then(res=>{
             // console.log(res.data)
             if(res.data.code!=800){
-                this.$store.dispatch('setSnackbarText','登录失效')
-                this.$store.commit('SetSnackbar',true)    
+                this.$bus.$emit('tip','登录失效')
             }else{
                 this.files = [...res.data.data]
             }
@@ -158,6 +156,9 @@ export default {
     },
     mounted(){
       this.getData()
+      this.$bus.$on("getData",()=>{
+        this.getData()
+      })
     }
 
 }

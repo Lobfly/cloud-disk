@@ -113,15 +113,15 @@ export default {
                 user_password:this.loginInfo.password,
             })
             .then((res)=>{
-                this.$store.dispatch('setSnackbarText',res.data.message)
-                this.$store.commit('SetSnackbar',true)
+                this.$bus.$emit('tip',res.data.message)
                 if(res.data.code == 802){
                     //跳转
-                    //加token
+                    //token储存到localStorage
+                    //为了安全加个退出清除localStorage的功能
                     this.$router.push({
                         path:'/home'
                     })
-                    _axios.defaults.headers.Authorization = res.data.data.token  //和Home页面共用的一个_axios
+                    localStorage.setItem('Authorization',res.data.data.token)
                     console.log(res.data.data.token)
                 }
             })
@@ -141,14 +141,13 @@ export default {
             }).then((res)=>{
                 
                 if(res.data.code == 820){
-                    this.$store.dispatch('setSnackbarText',`${res.data.message}正在为您跳转至登录页面...`)
+                    this.$bus.$emit('tip',`${res.data.message}正在为您跳转至登录页面...`)
                     setTimeout(()=>{
                         this.isRegister = false
                     },2000)
                 }else{
-                    this.$store.dispatch('setSnackbarText',res.data.message)
+                    this.$bus.$emit('tip',res.data.message)
                 }
-                this.$store.commit('SetSnackbar',true)
                 console.log(res)
             }).then((error)=>{
                 if(error){
@@ -193,8 +192,7 @@ export default {
                 }).then((res)=>{
                     console.log(res.data)
                     if(res.data.code == 808){
-                        this.$store.dispatch('setSnackbarText','重置成功，正在为您跳转至登录页面...')
-                        this.$store.commit('SetSnackbar',true)
+                        this.$bus.$emit('tip','重置成功，正在为您跳转至登录页面...')
                         setTimeout(()=>{
                             this.isReset = false
                         },2000)

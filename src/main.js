@@ -8,5 +8,9 @@ new Vue({
   vuetify,
   router,
   store,
-  render: h => h(App)
+  render: h => h(App),
+  created(){
+    const BusComponent = Vue.extend({})
+    Vue.prototype.$bus = new BusComponent()
+  }
 }).$mount('#app')
